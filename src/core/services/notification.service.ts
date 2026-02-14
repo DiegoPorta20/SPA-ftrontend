@@ -20,7 +20,7 @@ export class NotificationService {
    * Muestra una notificación de éxito
    */
   success(message: string, duration: number = 4000): void {
-    this.snackBar.open(message, 'Cerrar', {
+    this.snackBar.open(message, '✕', {
       ...this.defaultConfig,
       duration,
       panelClass: ['notification-success']
@@ -31,7 +31,7 @@ export class NotificationService {
    * Muestra una notificación de error
    */
   error(message: string, duration: number = 6000): void {
-    this.snackBar.open(message, 'Cerrar', {
+    this.snackBar.open(message, '✕', {
       ...this.defaultConfig,
       duration,
       panelClass: ['notification-error']
@@ -42,7 +42,7 @@ export class NotificationService {
    * Muestra una notificación de información
    */
   info(message: string, duration: number = 4000): void {
-    this.snackBar.open(message, 'Cerrar', {
+    this.snackBar.open(message, '✕', {
       ...this.defaultConfig,
       duration,
       panelClass: ['notification-info']
@@ -53,7 +53,7 @@ export class NotificationService {
    * Muestra una notificación de advertencia
    */
   warning(message: string, duration: number = 5000): void {
-    this.snackBar.open(message, 'Cerrar', {
+    this.snackBar.open(message, '✕', {
       ...this.defaultConfig,
       duration,
       panelClass: ['notification-warning']

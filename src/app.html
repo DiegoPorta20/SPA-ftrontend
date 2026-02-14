@@ -1,12 +1,7 @@
-<div class="app-container">
-  <!-- Loader global -->
-  <app-loader />
+<!-- Loader global -->
+<app-loader />
 
-  <!-- Barra de navegación -->
-  <app-navbar />
-
-  <!-- Contenido principal de la aplicación -->
-  <main class="app-content">
-    <router-outlet />
-  </main>
-</div>
+<!-- Navbar con sidenav que envuelve todo el contenido -->
+<app-navbar>
+  <router-outlet />
+</app-navbar>

@@ -23,7 +23,7 @@ h2 {
     font-size: 32px;
     width: 32px;
     height: 32px;
-    color: #667eea;
+    color: #219ebc;
   }
 }
 
@@ -46,7 +46,7 @@ mat-dialog-content {
     color: #374151;
 
     mat-icon {
-      color: #667eea;
+      color: #219ebc;
       font-size: 24px;
       width: 24px;
       height: 24px;
@@ -151,7 +151,7 @@ mat-divider {
         font-size: 16px;
 
         mat-icon {
-          color: #667eea;
+          color: #ffb703;
           font-size: 20px;
           width: 20px;
           height: 20px;
@@ -199,12 +199,12 @@ mat-dialog-actions {
     }
 
     &[color="primary"] {
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.3);
       transition: all 0.3s ease;
 
       &:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        box-shadow: 0 6px 16px rgba(251, 133, 0, 0.4);
       }
     }
   }

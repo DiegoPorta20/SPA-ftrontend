@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../enviroment/enviroment';
-import { Cliente, ClienteDTO, ApiResponse } from '../../../core/models';
+import { Cliente, ClienteDTO, ApiResponse, PaginatedResponse } from '../../../core/models';
 
 /**
  * Servicio para gestionar clientes y sus mascotas
@@ -22,7 +22,7 @@ export class ClienteService {
    * @param perPage Elementos por página
    * @param search Término de búsqueda (nombre o DNI)
    */
-  getClientes(page: number = 1, perPage: number = 10, search: string = ''): Observable<any> {
+  getClientes(page: number = 1, perPage: number = 10, search: string = ''): Observable<PaginatedResponse<Cliente>> {
     let params = new HttpParams()
       .set('page', page.toString())
       .set('per_page', perPage.toString());
@@ -31,7 +31,7 @@ export class ClienteService {
       params = params.set('search', search.trim());
     }
 
-    return this.http.get<any>(this.apiUrl, { params });
+    return this.http.get<PaginatedResponse<Cliente>>(this.apiUrl, { params });
   }
 
   /**

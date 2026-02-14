@@ -93,25 +93,23 @@ export class ClienteListComponent implements OnInit {
     this.clienteService
       .getClientes(this.currentPage(), this.pageSize(), search)
       .subscribe({
-        next: (response: any) => {
-          // El API puede devolver un array directo o un objeto con data
-          if (Array.isArray(response)) {
-            // Si es un array directo
-            this.dataSource.data = response;
-            this.totalItems.set(response.length);
-          } else if (response.data && Array.isArray(response.data)) {
-            // Si viene en response.data (paginado)
-            this.dataSource.data = response.data;
-            this.totalItems.set(response.total || response.data.length);
-          } else {
-            // Fallback
-            this.dataSource.data = [];
-            this.totalItems.set(0);
+        next: (response) => {
+          // Respuesta paginada de Laravel
+          this.dataSource.data = response.data;
+          this.totalItems.set(response.meta.total);
+
+          // Actualizar el paginador si existe
+          if (this.paginator) {
+            this.paginator.length = response.meta.total;
+            this.paginator.pageIndex = response.meta.current_page - 1;
+            this.paginator.pageSize = response.meta.per_page;
           }
         },
-        error: () => {
+        error: (error) => {
+          console.error('Error al cargar clientes:', error);
           this.dataSource.data = [];
           this.totalItems.set(0);
+          this.notificationService.error('Error al cargar los clientes');
         }
       });
   }
