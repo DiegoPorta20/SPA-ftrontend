@@ -1,1 +1,238 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Importar tema precompilado de Angular Material
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Variables de diseño
+$font-family: 'Poppins', sans-serif;
+$primary-color: #667eea;
+$secondary-color: #764ba2;
+$background-color: #f8f9fa;
+$text-color: #2d3748;
+$text-secondary: #718096;
+
+// Estilos globales
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: $font-family;
+}
+
+body {
+  margin: 0;
+  background-color: $background-color;
+  color: $text-color;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Mejorar la apariencia de los formularios
+.mat-mdc-form-field {
+  width: 100%;
+  font-family: $font-family;
+}
+
+// Override Material Typography
+.mat-typography {
+  font-family: $font-family;
+}
+
+// Scroll suave
+html {
+  scroll-behavior: smooth;
+}
+
+// Asegurar que los iconos de Material se vean bien
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+// Mejorar apariencia de botones
+.mat-mdc-raised-button, .mat-mdc-button {
+  font-family: $font-family;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+// Estilos para los diálogos
+.mat-mdc-dialog-container {
+  .mdc-dialog__surface {
+    border-radius: 16px !important;
+  }
+}
+
+// Animaciones suaves
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+// ============================================
+// Estilos para Notificaciones (Snackbar)
+// ============================================
+
+// Configuración base del snackbar
+.mdc-snackbar {
+  font-family: $font-family !important;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-snack-bar-button-color: #fff;
+  --mdc-snackbar-container-color: transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+
+  .mdc-snackbar__surface {
+    border-radius: 12px !important;
+    padding: 0 !important;
+    min-width: 344px;
+    max-width: 568px;
+  }
+
+  .mat-mdc-snack-bar-label {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &::before {
+      font-family: 'Material Icons';
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .mat-mdc-button {
+    font-weight: 600;
+    font-family: $font-family;
+    margin-right: 8px;
+  }
+}
+
+// Notificación de Éxito
+.notification-success {
+  .mdc-snackbar__surface {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    color: white !important;
+  }
+
+  .mat-mdc-snack-bar-label::before {
+    content: 'check_circle';
+  }
+
+  .mat-mdc-button {
+    --mdc-text-button-label-text-color: white !important;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Notificación de Error
+.notification-error {
+  .mdc-snackbar__surface {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    color: white !important;
+  }
+
+  .mat-mdc-snack-bar-label::before {
+    content: 'error';
+  }
+
+  .mat-mdc-button {
+    --mdc-text-button-label-text-color: white !important;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Notificación de Información
+.notification-info {
+  .mdc-snackbar__surface {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+    color: white !important;
+  }
+
+  .mat-mdc-snack-bar-label::before {
+    content: 'info';
+  }
+
+  .mat-mdc-button {
+    --mdc-text-button-label-text-color: white !important;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Notificación de Advertencia
+.notification-warning {
+  .mdc-snackbar__surface {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    color: white !important;
+  }
+
+  .mat-mdc-snack-bar-label::before {
+    content: 'warning';
+  }
+
+  .mat-mdc-button {
+    --mdc-text-button-label-text-color: white !important;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Animación de entrada
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.mat-mdc-snack-bar-container {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+

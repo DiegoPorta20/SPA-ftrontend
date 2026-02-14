@@ -1,0 +1,111 @@
+<div class="detalle-container">
+  @if (loading()) {
+    <div class="loading-state">
+      <mat-spinner diameter="60"></mat-spinner>
+      <p>Cargando información del cliente...</p>
+    </div>
+  } @else if (cliente()) {
+    <mat-card class="detalle-card">
+      <!-- Header con gradiente -->
+      <mat-card-header class="card-header">
+        <button mat-icon-button class="back-button" (click)="onBack()" matTooltip="Volver">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="header-content">
+          <mat-icon class="header-icon">person</mat-icon>
+          <div>
+            <h1>{{ cliente()!.nombre_completo || (cliente()!.nombres + ' ' + cliente()!.apellidos) }}</h1>
+            <p class="subtitle">Información del Cliente</p>
+          </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="onEdit()" class="edit-button">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+      </mat-card-header>
+
+      <mat-card-content>
+        <!-- Información Personal -->
+        <section class="info-section">
+          <h2 class="section-title">
+            <mat-icon>badge</mat-icon>
+            Información Personal
+          </h2>
+          <div class="info-grid">
+            <div class="info-item">
+              <mat-icon>badge</mat-icon>
+              <div class="info-content">
+                <span class="info-label">DNI</span>
+                <span class="info-value">{{ cliente()!.dni }}</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <mat-icon>email</mat-icon>
+              <div class="info-content">
+                <span class="info-label">Email</span>
+                <span class="info-value">{{ cliente()!.email }}</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <mat-icon>phone</mat-icon>
+              <div class="info-content">
+                <span class="info-label">Teléfono</span>
+                <span class="info-value">{{ cliente()!.telefono }}</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <mat-icon>home</mat-icon>
+              <div class="info-content">
+                <span class="info-label">Dirección</span>
+                <span class="info-value">{{ cliente()!.direccion }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <mat-divider></mat-divider>
+
+        <!-- Mascotas -->
+        <section class="info-section">
+          <h2 class="section-title">
+            <mat-icon>pets</mat-icon>
+            Mascotas ({{ cliente()!.mascotas?.length || 0 }})
+          </h2>
+          @if (cliente()!.mascotas && cliente()!.mascotas!.length > 0) {
+            <div class="mascotas-grid">
+              @for (mascota of cliente()!.mascotas; track mascota.id) {
+                <mat-card class="mascota-card">
+                  <div class="mascota-header">
+                    <mat-icon class="mascota-icon">pets</mat-icon>
+                    <h3>{{ mascota.nombre }}</h3>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <div class="mascota-info">
+                    <div class="mascota-detail">
+                      <span class="detail-label">Especie:</span>
+                      <mat-chip highlighted>{{ mascota.especie }}</mat-chip>
+                    </div>
+                    <div class="mascota-detail">
+                      <span class="detail-label">Raza:</span>
+                      <span class="detail-value">{{ mascota.raza }}</span>
+                    </div>
+                    <div class="mascota-detail">
+                      <span class="detail-label">Edad:</span>
+                      <span class="detail-value">{{ mascota.edad }} {{ mascota.edad === 1 ? 'año' : 'años' }}</span>
+                    </div>
+                  </div>
+                </mat-card>
+              }
+            </div>
+          } @else {
+            <div class="empty-mascotas">
+              <mat-icon>pets</mat-icon>
+              <p>Este cliente no tiene mascotas registradas</p>
+            </div>
+          }
+        </section>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>
+

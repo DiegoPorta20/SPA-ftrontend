@@ -1,0 +1,235 @@
+
+.dialog-container {
+  padding: 8px;
+  font-family: 'Poppins', sans-serif;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 8px 0;
+  padding: 16px 24px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #667eea;
+  }
+}
+
+mat-dialog-content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.form-section {
+  margin-bottom: 32px;
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 24px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+
+    mat-icon {
+      color: #667eea;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    button {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+      }
+    }
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  width: 100%;
+
+  &.full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+mat-divider {
+  margin: 32px 0;
+}
+
+.mascotas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .empty-state-small {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    text-align: center;
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      color: #d1d5db;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+  }
+
+  .mascota-card {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .mascota-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e5e7eb;
+
+      .mascota-number {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: #374151;
+        font-size: 16px;
+
+        mat-icon {
+          color: #667eea;
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      button {
+        &:disabled {
+          opacity: 0.3;
+        }
+      }
+    }
+
+    .mascota-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+
+      .mascota-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+mat-dialog-actions {
+  padding: 20px 24px;
+  gap: 12px;
+  border-top: 2px solid #e5e7eb;
+  background: #f9fafb;
+  margin: 0 -24px -24px -24px;
+
+  button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    padding: 0 24px;
+    height: 44px;
+    border-radius: 22px;
+
+    mat-icon {
+      margin-right: 8px;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &[color="primary"] {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .mascota-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  mat-dialog-content {
+    padding: 16px;
+  }
+
+  mat-dialog-actions {
+    flex-direction: column-reverse;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
