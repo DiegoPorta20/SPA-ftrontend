@@ -21,7 +21,7 @@
         <div class="form-grid">
           <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre" placeholder="Ingrese el nombre">
+            <input matInput formControlName="nombres" placeholder="Ingrese el nombre">
             <mat-icon matPrefix>person</mat-icon>
             @if (hasError('nombre')) {
               <mat-error>{{ getErrorMessage('nombre') }}</mat-error>
@@ -30,7 +30,7 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Apellido</mat-label>
-            <input matInput formControlName="apellido" placeholder="Ingrese el apellido">
+            <input matInput formControlName="apellidos" placeholder="Ingrese el apellido">
             <mat-icon matPrefix>person</mat-icon>
             @if (hasError('apellido')) {
               <mat-error>{{ getErrorMessage('apellido') }}</mat-error>
@@ -166,18 +166,20 @@
       <div class="form-actions">
         <button
           type="button"
-          mat-stroked-button
+          mat-raised-button
           (click)="onCancel()"
-          [disabled]="isSubmitting()">
-          <mat-icon>cancel</mat-icon>
+          [disabled]="isSubmitting()"
+          class="btn-cancel">
+          <mat-icon>close</mat-icon>
           Cancelar
         </button>
         <button
           type="submit"
           mat-raised-button
           color="primary"
-          [disabled]="clienteForm.invalid || isSubmitting()">
-          <mat-icon>{{ isEditMode() ? 'save' : 'add' }}</mat-icon>
+          [disabled]="clienteForm.invalid || isSubmitting()"
+          class="btn-submit">
+          <mat-icon>{{ isEditMode() ? 'save' : 'check' }}</mat-icon>
           {{ isEditMode() ? 'Actualizar' : 'Guardar' }}
         </button>
       </div>

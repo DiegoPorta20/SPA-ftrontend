@@ -26,7 +26,7 @@
   overflow: hidden;
 
   .card-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #023047 0%, #219ebc 100%);
     color: white;
     padding: 32px;
     margin: -16px -16px 0 -16px;
@@ -63,35 +63,63 @@
 
       h1 {
         margin: 0;
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 600;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
       }
 
       .subtitle {
         margin: 4px 0 0 0;
-        font-size: 14px;
+        font-size: 13px;
         opacity: 0.9;
         font-weight: 300;
       }
     }
 
-    .edit-button {
-      background: white;
-      color: #667eea;
-      font-weight: 600;
-      border-radius: 24px;
-      padding: 0 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-      }
+    .edit-button,
+    .delete-button {
+      height: 40px;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 8px;
+      padding: 0 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease;
 
       mat-icon {
-        margin-right: 8px;
+        margin-right: 6px;
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .edit-button {
+      background: white;
+      color: #219ebc;
+
+      &:hover {
+        background: #f0f9ff;
+      }
+    }
+
+    .delete-button {
+      background: #ef4444;
+      color: white;
+
+      &:hover {
+        background: #dc2626;
       }
     }
   }
@@ -112,16 +140,16 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    margin: 0 0 24px 0;
-    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-size: 18px;
     font-weight: 600;
-    color: #374151;
+    color: #1f2937;
 
     mat-icon {
-      color: #667eea;
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
+      color: #219ebc;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
     }
   }
 }
@@ -129,29 +157,29 @@
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 20px;
 }
 
 .info-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
+  gap: 14px;
+  padding: 18px;
   background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  border-radius: 10px;
+  transition: all 0.2s ease;
 
   &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
   }
 
   mat-icon {
-    color: #667eea;
-    font-size: 28px;
-    width: 28px;
-    height: 28px;
+    color: #219ebc;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
     margin-top: 2px;
   }
 
@@ -162,7 +190,7 @@
     gap: 4px;
 
     .info-label {
-      font-size: 12px;
+      font-size: 11px;
       color: #6b7280;
       font-weight: 500;
       text-transform: uppercase;
@@ -170,7 +198,7 @@
     }
 
     .info-value {
-      font-size: 16px;
+      font-size: 14px;
       color: #1f2937;
       font-weight: 500;
       word-break: break-word;
@@ -204,7 +232,7 @@ mat-divider {
     align-items: center;
     gap: 12px;
     padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #219ebc 0%, #8ecae6 100%);
     color: white;
 
     .mascota-icon {
@@ -250,6 +278,9 @@ mat-divider {
 
       mat-chip {
         font-weight: 500;
+        background: #fb8500 !important;
+        color: white !important;
+        border: none !important;
       }
     }
   }
@@ -309,9 +340,17 @@ mat-divider {
         }
       }
 
-      .edit-button {
+      .header-actions {
         width: 100%;
+        flex-direction: column;
+        gap: 8px;
         margin-top: 12px;
+
+        .edit-button,
+        .delete-button {
+          width: 100%;
+          justify-content: center;
+        }
       }
     }
 

@@ -72,8 +72,8 @@ export class ClienteFormComponent implements OnInit {
    */
   private initForm(): void {
     this.clienteForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-      apellido: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      nombres: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      apellidos: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       dni: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
       telefono: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
@@ -126,35 +126,33 @@ export class ClienteFormComponent implements OnInit {
   private loadCliente(id: number): void {
     this.clienteService.getCliente(id).subscribe({
       next: (response: any) => {
-        if (response.data) {
-          const cliente = response.data;
+        const cliente = response.data || response;
 
-          // Cargar datos del cliente
-          this.clienteForm.patchValue({
-            nombre: cliente.nombre,
-            apellido: cliente.apellido,
-            dni: cliente.dni,
-            email: cliente.email,
-            telefono: cliente.telefono,
-            direccion: cliente.direccion
+        // Cargar datos del cliente - mapear nombres/apellidos (plural del API) a nombre/apellido (singular del form)
+        this.clienteForm.patchValue({
+          nombres: cliente.nombres || cliente.nombre,
+          apellidos: cliente.apellidos || cliente.apellido,
+          dni: cliente.dni,
+          email: cliente.email,
+          telefono: cliente.telefono,
+          direccion: cliente.direccion
+        });
+
+        // Cargar mascotas
+        this.mascotas.clear();
+        if (cliente.mascotas && cliente.mascotas.length > 0) {
+          cliente.mascotas.forEach((mascota: any) => {
+            this.mascotas.push(this.createMascotaGroup({
+              id: mascota.id,
+              nombre: mascota.nombre,
+              especie: mascota.especie,
+              raza: mascota.raza,
+              edad: mascota.edad
+            }));
           });
-
-          // Cargar mascotas
-          this.mascotas.clear();
-          if (cliente.mascotas && cliente.mascotas.length > 0) {
-            cliente.mascotas.forEach((mascota: any) => {
-              this.mascotas.push(this.createMascotaGroup({
-                id: mascota.id,
-                nombre: mascota.nombre,
-                especie: mascota.especie,
-                raza: mascota.raza,
-                edad: mascota.edad
-              }));
-            });
-          } else {
-            // Si no tiene mascotas, agregar una vacía
-            this.addMascota();
-          }
+        } else {
+          // Si no tiene mascotas, agregar una vacía
+          this.addMascota();
         }
       },
       error: () => {

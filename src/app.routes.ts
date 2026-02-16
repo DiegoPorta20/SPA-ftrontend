@@ -22,6 +22,11 @@ export const routes: Routes = [
       .then(m => m.ClienteFormComponent)
   },
   {
+    path: 'clientes/detalle/:id',
+    loadComponent: () => import('./features/clientes/components/cliente-detalle/cliente-detalle.component')
+      .then(m => m.ClienteDetalleComponent)
+  },
+  {
     path: '**',
     redirectTo: '/clientes'
   }

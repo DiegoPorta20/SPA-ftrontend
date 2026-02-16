@@ -43,16 +43,17 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
           <a mat-list-item
              routerLink="/clientes"
              routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{exact: true}"
              (click)="isMobile && sidenav.close()">
-            <mat-icon matListItemIcon>people</mat-icon>
-            <span matListItemTitle>Clientes</span>
+            <mat-icon matListItemIcon>home</mat-icon>
+            <span matListItemTitle>Inicio</span>
           </a>
           <a mat-list-item
              routerLink="/clientes"
              routerLinkActive="active-link"
              (click)="isMobile && sidenav.close()">
-            <mat-icon matListItemIcon>dashboard</mat-icon>
-            <span matListItemTitle>Dashboard</span>
+            <mat-icon matListItemIcon>people</mat-icon>
+            <span matListItemTitle>Clientes</span>
           </a>
         </mat-nav-list>
       </mat-sidenav>
@@ -68,11 +69,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
               [class.hide-desktop]="!isMobile">
               <mat-icon>menu</mat-icon>
             </button>
-
-            <div class="navbar-brand">
-              <mat-icon class="brand-icon">pets</mat-icon>
-              <span class="brand-text">PetManager</span>
-            </div>
 
             <span class="spacer"></span>
 
@@ -102,23 +98,23 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
     .sidenav {
       width: 260px;
-      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(180deg, #023047 0%, #219ebc 100%);
 
       .sidenav-header {
-        padding: 24px 20px;
+        padding: 15px 20px;
         display: flex;
         align-items: center;
         gap: 12px;
         color: white;
 
         .brand-icon {
-          font-size: 32px;
-          width: 32px;
-          height: 32px;
+          font-size: 28px;
+          width: 28px;
+          height: 28px;
         }
 
         .brand-text {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 600;
           font-family: 'Poppins', sans-serif;
         }
@@ -168,11 +164,11 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+      background: linear-gradient(135deg, #219ebc 0%, #8ecae6 100%) !important;
     }
 
     mat-toolbar-row {
-      height: 64px;
+      height: 56px;
       padding: 0 16px;
     }
 
@@ -187,16 +183,16 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     .navbar-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
 
       .brand-icon {
-        font-size: 28px;
-        width: 28px;
-        height: 28px;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
       }
 
       .brand-text {
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 600;
         font-family: 'Poppins', sans-serif;
       }
@@ -214,6 +210,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     .main-content {
       width: 100%;
       background: #f8f9fa;
+      padding: 24px;
+      min-height: calc(100vh - 64px);
+      overflow-y: auto;
     }
 
     @media (max-width: 768px) {
@@ -229,6 +228,20 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
         .brand-text {
           font-size: 18px;
         }
+      }
+
+      .main-content {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-content {
+        padding: 12px;
+      }
+
+      .navbar-brand .brand-text {
+        display: none;
       }
     }
   `]

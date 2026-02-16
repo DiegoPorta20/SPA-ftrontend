@@ -1,28 +1,39 @@
 .cliente-form-card {
-  margin: 24px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 
   mat-card-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #023047 0%, #219ebc 100%);
     color: white;
-    padding: 24px;
+    padding: 24px 32px;
     margin: -16px -16px 24px -16px;
     border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .back-button {
+      color: white;
+      flex-shrink: 0;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
 
     h1 {
       margin: 0;
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 500;
     }
   }
 
   mat-card-content {
-    padding: 32px;
+    padding: 32px 40px;
   }
 }
 
@@ -33,17 +44,17 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #333;
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0 0 24px 0;
+    color: #1f2937;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
   }
 
   .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 
     h2 {
       margin: 0;
@@ -60,7 +71,7 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
+  gap: 20px;
 
   .full-width {
     grid-column: 1 / -1;
@@ -78,7 +89,7 @@ mat-divider {
 .mascotas-container {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 
   .empty-mascotas {
     display: flex;
@@ -101,10 +112,11 @@ mat-divider {
   .mascota-card {
     background: #fafafa;
     border: 1px solid #e0e0e0;
+    padding: 20px;
     transition: all 0.3s ease;
 
     &:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .mascota-header {
@@ -120,12 +132,12 @@ mat-divider {
         align-items: center;
         gap: 8px;
         margin: 0;
-        color: #555;
-        font-size: 18px;
-        font-weight: 500;
+        color: #374151;
+        font-size: 16px;
+        font-weight: 600;
 
         mat-icon {
-          color: #667eea;
+          color: #219ebc;
         }
       }
     }
@@ -148,15 +160,38 @@ mat-divider {
   gap: 16px;
   margin-top: 32px;
   padding-top: 24px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #e5e7eb;
 
   button {
-    min-width: 140px;
-    height: 48px;
-    font-size: 16px;
+    min-width: 120px;
+    height: 44px;
+    font-size: 15px;
+    font-weight: 500;
 
     mat-icon {
-      margin-right: 8px;
+      margin-right: 6px;
+    }
+  }
+
+  .btn-cancel {
+    background: #f3f4f6;
+    color: #6b7280;
+
+    &:hover:not(:disabled) {
+      background: #e5e7eb;
+    }
+  }
+
+  .btn-submit {
+    box-shadow: 0 2px 6px rgba(33, 158, 188, 0.3);
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 10px rgba(33, 158, 188, 0.4);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 }
